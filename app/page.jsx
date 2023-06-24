@@ -11,8 +11,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="w-full">
-      <Link href="/parking-lot">
+    <main className="flex flex-col items-center gap-5">
+      <Link href="/parking-lot" className="w-full">
         <MenuSection
           src={IconCar}
           alt="Icon of a car"
@@ -20,7 +20,7 @@ export default function Home() {
           bgColor="bg-menu-blue-cyan"
         />
       </Link>
-      <Link href="/services-day">
+      <Link href="/services-day" className="w-full">
         <MenuSection
           src={IconCarWash}
           alt="Icon of a car"
@@ -28,7 +28,7 @@ export default function Home() {
           bgColor="bg-menu-blue-dark"
         />
       </Link>
-      <Link href="/customers">
+      <Link href="/customers" className="w-full">
         <MenuSection
           src={IconContact}
           alt="Icon of a card"
@@ -36,7 +36,7 @@ export default function Home() {
           bgColor="bg-menu-purple"
         />
       </Link>
-      <Link href="/washers">
+      <Link href="/washers" className="w-full">
         <MenuSection
           src={IconPerson}
           alt="Icon of a person"
@@ -44,7 +44,7 @@ export default function Home() {
           bgColor="bg-menu-red"
         />
       </Link>
-      <Link href="/edit-combo">
+      <Link href="/edit-combo" className="w-full">
         <MenuSection
           src={IconSetting}
           alt="Icon of a gear"

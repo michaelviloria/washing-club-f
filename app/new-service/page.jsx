@@ -3,6 +3,7 @@ import Dropdown from "@/components/FormElements/Dropdown/Dropdown";
 import Form from "@/components/FormElements/Form/Form";
 import Input from "@/components/FormElements/Input/Input";
 import Label from "@/components/FormElements/Label/Label";
+import Title from "@/components/Title/Title";
 import Link from "next/link";
 
 const optionsVehicles = [
@@ -23,8 +24,8 @@ const optionsServices = [
 
 export default function NewServicePage() {
   return (
-    <main className="px-5 py-8">
-      <h1 className="text-4xl font-bold text-center">Nuevo servicio</h1>
+    <main>
+      <Title>Nuevo servicio</Title>
       <Form action="" method="post">
         <div className="mt-3">
           <Label htmlFor="plate-number">Número de placa:</Label>
@@ -58,17 +59,19 @@ export default function NewServicePage() {
           <Link href="/">
             <Button
               type="button"
-              text="Cancelar"
               background="bg-red-400"
               textColor="text-red-900"
-            />
+            >
+              Cancelar
+            </Button>
           </Link>
           <Button
             type="submit"
-            text="Aceptar"
             background="bg-green-400"
             textColor="text-green-900"
-          />
+          >
+            Aceptar
+          </Button>
         </div>
       </Form>
     </main>

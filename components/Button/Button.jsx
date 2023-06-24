@@ -1,6 +1,6 @@
 export default function Button({
   type,
-  text,
+  children,
   background = "",
   textColor = "",
 }) {
@@ -9,7 +9,7 @@ export default function Button({
       type={type}
       className={`py-2 rounded px-7 font-bold text-base ${background} ${textColor}`}
     >
-      {text}
+      {children}
     </button>
   );
 }

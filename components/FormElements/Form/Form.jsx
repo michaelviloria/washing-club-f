@@ -3,7 +3,7 @@ export default function Form({ action, method, children }) {
     <form
       action={action}
       method={method}
-      className="w-full max-w-md p-8 mx-auto bg-white rounded-md shadow-md"
+      className="w-full px-1"
     >
       {children}
     </form>

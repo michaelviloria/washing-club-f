@@ -1,4 +1,5 @@
 "use client";
+import Title from "@/components/Title/Title";
 import { useEffect, useState } from "react";
 
 export default function ServicesDayPage() {
@@ -18,7 +19,7 @@ export default function ServicesDayPage() {
   };
   return (
     <main>
-      <h1>Servicios del dia</h1>
+      <Title>Servicios del dia</Title>
       <span>{currentDate}</span>
     </main>
   );
