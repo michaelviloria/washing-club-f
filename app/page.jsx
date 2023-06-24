@@ -1,11 +1,11 @@
-import IconCar from "@/imgs/icon-car.png";
-import IconCarWash from "@/imgs/icon-car-wash.png";
-import IconContact from "@/imgs/icon-contact.png";
-import IconPerson from "@/imgs/icon-person.png";
-import IconSetting from "@/imgs/icon-setting.png";
+import IconCar from "../imgs/icon-car.png";
+import IconCarWash from "../imgs/icon-car-wash.png";
+import IconContact from "../imgs/icon-contact.png";
+import IconPerson from "../imgs/icon-person.png";
+import IconSetting from "../imgs/icon-setting.png";
 
-import MenuSection from "@/components/MenuSection/MenuSection";
-import ButtonAdd from "@/components/ButtonAdd/ButtonAdd";
+import MenuSection from "../components/MenuSection/MenuSection";
+import ButtonAdd from "../components/ButtonAdd/ButtonAdd";
 
 import Link from "next/link";
 
