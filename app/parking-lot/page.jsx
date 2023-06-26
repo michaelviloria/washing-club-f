@@ -1,4 +1,5 @@
 import ButtonAdd from "@/components/ButtonAdd/ButtonAdd";
+import ButtonPrev from "@/components/ButtonPrev/ButtonPrev";
 import ParkinItem from "@/components/ParkingItem/ParkingItem";
 import Title from "@/components/Title/Title";
 import Link from "next/link";
@@ -6,6 +7,7 @@ import Link from "next/link";
 export default function ParkingLotPage() {
   return (
     <main className="flex flex-col items-center gap-5">
+      <ButtonPrev />
       <Title>Parqueadero</Title>
       <ParkinItem
         plate={"ABC 123"}

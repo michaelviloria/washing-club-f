@@ -15,26 +15,30 @@ const optionsVehicles = [
   "Moto grande",
 ];
 
-export default function NewParkingPage() {
-  return (
-    <main className="">
+export default function NewCustomerPAge() {
+  return(
+    <main>
       <ButtonPrev />
-      <Title>Nuevo parqueo</Title>
+      <Title>Nuevo Cliente</Title>
       <Form action={""} method={"post"}>
         <div className="mt-4 mb-3">
-          <Label htmlFor="plate-number">Número de placa:</Label>
-          <Input type="text" id="plate-number" name="plate-number" />
+          <Label htmlFor="name-customer">Nombre del cliente:</Label>
+          <Input type="text" id="name-customer" name="name-customer" />
         </div>
         <div className="mb-3">
-          <Label htmlFor="type-vehicle">Tipo de vehiculo:</Label>
-          <Dropdown
-            name="type-vehicle"
-            id="type-vehicle"
-            options={optionsVehicles}
-          />
+          <Label htmlFor="phone-customer">Número de telefono:</Label>
+          <Input type="number" id="phone-customer" name="phone-customer" />
+        </div>
+        <div className="mb-3">
+          <Label htmlFor="plate-customer">Placa:</Label>
+          <Input type="text" id="plate-customer" name="plate-customer" />
+        </div>
+        <div className="mb-3">
+          <Label htmlFor="type-vehycle">Tipo de vehiculo:</Label>
+          <Dropdown id="type-vehycle" name="type-vehycle" options={optionsVehicles} />
         </div>
         <div className="flex justify-between w-full mt-6">
-          <Link href="/parking-lot">
+          <Link href="/">
             <Button
               type="button"
               background="bg-red-400"
@@ -55,5 +59,5 @@ export default function NewParkingPage() {
         </div>
       </Form>
     </main>
-  );
+  )
 }

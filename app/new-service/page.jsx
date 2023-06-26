@@ -1,4 +1,5 @@
 import Button from "@/components/Button/Button";
+import ButtonPrev from "@/components/ButtonPrev/ButtonPrev";
 import Dropdown from "@/components/FormElements/Dropdown/Dropdown";
 import Form from "@/components/FormElements/Form/Form";
 import Input from "@/components/FormElements/Input/Input";
@@ -25,6 +26,7 @@ const optionsServices = [
 export default function NewServicePage() {
   return (
     <main>
+      <ButtonPrev />
       <Title>Nuevo servicio</Title>
       <Form action="" method="post">
         <div className="mt-3">

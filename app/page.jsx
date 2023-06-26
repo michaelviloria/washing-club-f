@@ -44,7 +44,7 @@ export default function Home() {
           bgColor="bg-menu-red"
         />
       </Link>
-      <Link href="/edit-combo" className="w-full">
+      <Link href="/" className="w-full">
         <MenuSection
           src={IconSetting}
           alt="Icon of a gear"
