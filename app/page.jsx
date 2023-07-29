@@ -2,14 +2,15 @@ import IconCar from "../imgs/icon-car.png";
 import IconCarWash from "../imgs/icon-car-wash.png";
 import IconContact from "../imgs/icon-contact.png";
 import IconPerson from "../imgs/icon-person.png";
-import IconSetting from "../imgs/icon-setting.png";
 
 import MenuSection from "../components/MenuSection/MenuSection";
 import ButtonAdd from "../components/ButtonAdd/ButtonAdd";
 
 import Link from "next/link";
+import dbConnection from "@/utils/db_connection";
 
 export default function Home() {
+  dbConnection()
   return (
     <main className="flex flex-col items-center gap-5">
       <Link href="/parking-lot" className="w-full">
@@ -20,11 +21,11 @@ export default function Home() {
           bgColor="bg-menu-blue-cyan"
         />
       </Link>
-      <Link href="/services-day" className="w-full">
+      <Link href="/services-performed" className="w-full">
         <MenuSection
           src={IconCarWash}
           alt="Icon of a car"
-          title="Servicios del dia"
+          title="Servicios realizados"
           bgColor="bg-menu-blue-dark"
         />
       </Link>
@@ -42,14 +43,6 @@ export default function Home() {
           alt="Icon of a person"
           title="Lavadores"
           bgColor="bg-menu-red"
-        />
-      </Link>
-      <Link href="/" className="w-full">
-        <MenuSection
-          src={IconSetting}
-          alt="Icon of a gear"
-          title="Editar combos"
-          bgColor="bg-menu-orange"
         />
       </Link>
       <Link href="/new-service">

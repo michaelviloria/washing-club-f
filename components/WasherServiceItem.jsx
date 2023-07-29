@@ -4,6 +4,7 @@ export default function WasherServiceitem({
   service,
   price,
   time,
+  date
 }) {
   return (
     <section className="p-2 mt-5 border-2 rounded">
@@ -18,6 +19,9 @@ export default function WasherServiceitem({
       </p>
       <p className="text-2xl">
         <strong>Valor:</strong> {price}
+      </p>
+      <p className="text-2xl">
+        <strong>Fecha de registro:</strong> {date}
       </p>
       <p className="text-2xl">
         <strong>Hora de registro:</strong> {time}

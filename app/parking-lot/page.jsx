@@ -1,32 +1,38 @@
+"use client";
 import ButtonAdd from "@/components/ButtonAdd/ButtonAdd";
-import ButtonPrev from "@/components/ButtonPrev/ButtonPrev";
-import ParkinItem from "@/components/ParkingItem/ParkingItem";
-import Title from "@/components/Title/Title";
+import ButtonPrev from "@/components/ButtonPrev";
+import ParkinItems from "@/components/ParkingItems";
+import { getParking } from "@/utils/getResources";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function ParkingLotPage() {
+  const [parking, setParking] = useState([]);
+
+  useEffect(() => {
+    getParking(setParking);
+  }, []);
+
   return (
     <main className="flex flex-col items-center gap-5">
       <ButtonPrev />
-      <Title>Parqueadero</Title>
-      <ParkinItem
-        plate={"ABC 123"}
-        type={"Carro pequeño"}
-        entry={"10/06/2023 8:43 am"}
-        time={"7 dias"}
-      />
-      <ParkinItem
-        plate={"DEF 456"}
-        type={"Carro mediano"}
-        entry={"15/06/2023 6:43 am"}
-        time={"2 dias"}
-      />
-      <ParkinItem
-        plate={"GHI 789"}
-        type={"Carro grande"}
-        entry={"01/06/2023 1:00 pm"}
-        time={"24 dias"}
-      />
+      <h1>Parqueadero</h1>
+      {parking.length >= 1 ? (
+        parking.map((car) => {
+          return (
+            <ParkinItems
+              key={car._id}
+              plate={car.plate}
+              type={car.type}
+              entry={`${car.date} ${car.time}`}
+              time={"En construcción ..."}
+            />
+          );
+        })
+      ) : (
+        <h2>Ningún parqueo registrado.</h2>
+      )}
+
       <Link href={"/new-parking"}>
         <ButtonAdd text={"Añadir"} />
       </Link>

@@ -1,10 +1,9 @@
 import Button from "@/components/Button/Button";
-import ButtonPrev from "@/components/ButtonPrev/ButtonPrev";
-import Dropdown from "@/components/FormElements/Dropdown/Dropdown";
+import ButtonPrev from "@/components/ButtonPrev";
+import Dropdown from "@/components/Dropdown";
 import Form from "@/components/FormElements/Form/Form";
 import Input from "@/components/FormElements/Input/Input";
 import Label from "@/components/FormElements/Label/Label";
-import Title from "@/components/Title/Title";
 import Link from "next/link";
 
 const optionsVehicles = [
@@ -19,7 +18,7 @@ export default function NewCustomerPAge() {
   return(
     <main>
       <ButtonPrev />
-      <Title>Nuevo Cliente</Title>
+      <h1>Nuevo Cliente</h1>
       <Form action={""} method={"post"}>
         <div className="mt-4 mb-3">
           <Label htmlFor="name-customer">Nombre del cliente:</Label>

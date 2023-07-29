@@ -1,14 +1,13 @@
 import ButtonAdd from "@/components/ButtonAdd/ButtonAdd";
-import ButtonPrev from "@/components/ButtonPrev/ButtonPrev";
+import ButtonPrev from "@/components/ButtonPrev";
 import CustomerItem from "@/components/CustomerItem/CustomerItem";
-import Title from "@/components/Title/Title";
 import Link from "next/link";
 
 export default function customersPage() {
   return (
     <main className="flex flex-col gap-4 pt-12">
       <ButtonPrev />
-      <Title>Clientes</Title>
+      <h1>Clientes</h1>
       <CustomerItem
         name="Pedro Torres"
         phone="+571234567890"

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function WasherItem({ name, id }) {
+export default function WasherItem({ name }) {
   return (
     <section className="p-4 mt-5 border-2 rounded">
       <h3 className="text-2xl font-bold text-center">{name}</h3>
