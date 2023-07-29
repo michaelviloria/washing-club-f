@@ -1,6 +1,6 @@
 const getVehicles = async (setVehicles) => {
   try {
-    const res = await fetch("/api/type-vehicle", { next: { revalidate: 30 } });
+    const res = await fetch("/api/type-vehicle", { cache: "no-cache" });
     const data = await res.json();
     const vehicleList = [];
     data.forEach((vehicle) => {
@@ -14,9 +14,7 @@ const getVehicles = async (setVehicles) => {
 
 const getServices = async (setServices) => {
   try {
-    const res = await fetch(`/api/services/`, {
-      next: { revalidate: 30 },
-    });
+    const res = await fetch(`/api/services/`, { cache: "no-cache" });
     const data = await res.json();
     setServices(data);
   } catch (error) {
@@ -26,7 +24,7 @@ const getServices = async (setServices) => {
 
 const getServicesList = async (setServicesList) => {
   try {
-    const res = await fetch("/api/service-list", { next: { revalidate: 30 } });
+    const res = await fetch("/api/service-list", { cache: "no-cache" });
     const data = await res.json();
     const dataService = [];
     data.forEach((service) => {
@@ -40,7 +38,7 @@ const getServicesList = async (setServicesList) => {
 
 const getWashers = async (setWasher) => {
   try {
-    const res = await fetch("/api/washers", { next: { revalidate: 30 } });
+    const res = await fetch("/api/washers", { cache: "no-cache" });
     const data = await res.json();
     const dataWashers = [];
     data.forEach((washer) => {
@@ -54,9 +52,7 @@ const getWashers = async (setWasher) => {
 
 const getServicesWasher = async (name, setWasherService) => {
   try {
-    const res = await fetch(`/api/services-washer/${name}`, {
-      next: { revalidate: 30 },
-    });
+    const res = await fetch(`/api/services-washer/${name}`, { cache: "no-cache" });
     const data = await res.json();
     setWasherService(data);
   } catch (error) {
@@ -66,7 +62,7 @@ const getServicesWasher = async (name, setWasherService) => {
 
 const getParking = async (setParking) => {
   try {
-    const res = await fetch("/api/parking", { next: { revalidate: 30 } });
+    const res = await fetch("/api/parking", { cache: "no-cache" });
     const data = await res.json();
     setParking(data);
   } catch (error) {
