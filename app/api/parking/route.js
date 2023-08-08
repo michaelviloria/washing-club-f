@@ -1,5 +1,5 @@
-import { ParkingModel } from "@/models/Parking";
-import dbConnection from "@/utils/db_connection";
+import { ParkingModel } from "@/models/Parking.js";
+import dbConnection from "@/utils/db_connection.js";
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 
