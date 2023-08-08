@@ -1,6 +1,7 @@
 "use client";
 import {
   getCurrentDate,
+  getCurrentTime,
   getFormattedDate,
   getServices,
 } from "@/utils/getResources";
@@ -18,6 +19,7 @@ export default function ServiceItems() {
       {services.length >= 1 ? (
         services.map((service) => {
           const dateCurrent = getCurrentDate(service.date);
+          const timeCurrent = getCurrentTime(service.date);
 
           return (
             <article
@@ -46,6 +48,10 @@ export default function ServiceItems() {
               </p>
               <p>
                 <strong>Hora de registro: </strong>
+                {timeCurrent}
+              </p>
+              <p>
+                <strong>Fecha de registro: </strong>
                 {dateCurrent}
               </p>
             </article>
