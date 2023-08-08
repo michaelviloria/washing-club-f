@@ -1,13 +1,13 @@
 "use client";
 import ButtonPrev from "@/components/ButtonPrev";
 import WasherServiceitem from "@/components/WasherServiceItem";
+
 import { getServicesWasher } from "@/utils/getResources";
 import { useEffect, useState } from "react";
 
-export default function WahserServicesPage(props) {
-  const { name } = props.params;
+export default function WahserServicesPage({ params }) {
+  const { name } = params;
   const [washerServices, setWasherServices] = useState([]);
-
   useEffect(() => {
     getServicesWasher(name, setWasherServices);
   }, [name]);
@@ -18,16 +18,15 @@ export default function WahserServicesPage(props) {
       <h1>Servicios de {name}</h1>
       {washerServices.length >= 1 ? (
         washerServices.map((service) => {
-          const keyWasher = 0;
           return (
             <WasherServiceitem
-              plate={service.plateNumber}
+              plate={service.plate}
               type={service.typeVehicle}
               service={service.typeService}
-              price={service.serviceValue}
+              price={service.price}
               date={service.date}
               time={service.time}
-              key={keyWasher + 1}
+              key={service._id}
             />
           );
         })

@@ -1,13 +1,13 @@
-import serviceList from "@/models/serviceList";
+import { ServiceListModel } from "@/models/ServiceList";
 import dbConnection from "@/utils/db_connection";
 import { NextResponse } from "next/server";
 
-export async function GET() {
+export const GET = async () => {
+  await dbConnection();
   try {
-    await dbConnection();
-    const dataServiceList = await serviceList.find();
-    return NextResponse.json(dataServiceList);
+    const result = await ServiceListModel.find({});
+    return NextResponse.json({ data: result });
   } catch (error) {
     console.log(error);
   }
-}
+};

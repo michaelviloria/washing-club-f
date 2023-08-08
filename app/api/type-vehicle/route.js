@@ -1,13 +1,13 @@
-import typeVehicle from "@/models/typeVehicle";
+import { TypeVehicleModel } from "@/models/TypeVehicle";
 import dbConnection from "@/utils/db_connection";
 import { NextResponse } from "next/server";
 
-export async function GET() {
+export const GET = async () => {
+  await dbConnection();
   try {
-    await dbConnection();
-    const typeVehicles = await typeVehicle.find({});
-    return NextResponse.json(typeVehicles);
+    const result = await TypeVehicleModel.find({});
+    return NextResponse.json({ data: result });
   } catch (error) {
     console.log(error);
   }
-}
+};

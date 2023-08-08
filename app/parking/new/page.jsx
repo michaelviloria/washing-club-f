@@ -1,7 +1,7 @@
 import ButtonPrev from "@/components/ButtonPrev";
 import FormNewParking from "@/components/FormNewParking";
 
-export default function NewParkingPage() {
+export default async function NewParkingPage() {
   return (
     <main>
       <ButtonPrev />

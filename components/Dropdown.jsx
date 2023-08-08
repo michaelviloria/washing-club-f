@@ -1,4 +1,4 @@
-export default function Dropdown({ id, options, value, change }) {
+export default function Dropdown({ id, options, change, value }) {
   return (
     <div className="relative inline-flex w-full">
       <svg
@@ -13,12 +13,12 @@ export default function Dropdown({ id, options, value, change }) {
         />
       </svg>
       <select
-        value={value}
         onChange={change}
         id={id}
+        value={value}
         className="w-full h-10 pl-5 pr-10 text-gray-600 bg-white border border-gray-300 rounded-full appearance-none hover:border-gray-400 focus:outline-none"
       >
-        <option value="choose"></option>
+        <option></option>
         {options.map((element) => (
           <option key={element}>{element}</option>
         ))}

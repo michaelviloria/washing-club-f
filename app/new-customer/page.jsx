@@ -1,25 +1,11 @@
-import Button from "@/components/Button/Button";
 import ButtonPrev from "@/components/ButtonPrev";
-import Dropdown from "@/components/Dropdown";
-import Form from "@/components/FormElements/Form/Form";
-import Input from "@/components/FormElements/Input/Input";
-import Label from "@/components/FormElements/Label/Label";
-import Link from "next/link";
-
-const optionsVehicles = [
-  "Carro pequeño",
-  "Carro mediano",
-  "Carro grande",
-  "Moto pequeña",
-  "Moto grande",
-];
 
 export default function NewCustomerPAge() {
   return(
     <main>
       <ButtonPrev />
       <h1>Nuevo Cliente</h1>
-      <Form action={""} method={"post"}>
+      {/* <Form action={""} method={"post"}>
         <div className="mt-4 mb-3">
           <Label htmlFor="name-customer">Nombre del cliente:</Label>
           <Input type="text" id="name-customer" name="name-customer" />
@@ -56,7 +42,7 @@ export default function NewCustomerPAge() {
             </Button>
           </Link>
         </div>
-      </Form>
+      </Form> */}
     </main>
   )
 }

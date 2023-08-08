@@ -7,8 +7,9 @@ export default function FormNewService() {
   const [plateNumber, setPlateNumber] = useState("");
   const [typeVehicle, setTypeVehicle] = useState("");
   const [typeService, setTypeService] = useState("");
-  const [serviceValue, setServiceValue] = useState(0);
+  const [serviceValue, setServiceValue] = useState("");
   const [washerName, setWasherName] = useState("");
+
   const [error, setError] = useState([]);
   const [success, setSuccess] = useState(false);
   const [vehicles, setVehicles] = useState([]);
@@ -19,7 +20,15 @@ export default function FormNewService() {
     getVehicles(setVehicles);
     getServicesList(setServicesList);
     getWashers(setWasher);
-  }, []);
+
+    if (success) {
+      setPlateNumber("");
+      setServiceValue("");
+      setTypeService("");
+      setTypeVehicle("");
+      setWasherName("");
+    }
+  }, [success]);
 
   const handleChangeVehicle = (e) => {
     setTypeVehicle(e.target.value);
@@ -34,31 +43,23 @@ export default function FormNewService() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("/api/new-service", {
+    const res = await fetch("/api/services", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        plateNumber,
-        serviceValue,
-        washerName,
-        typeService,
+        plate: plateNumber.toLowerCase().replace(/\s+/g, ""),
         typeVehicle,
+        typeService,
+        price: serviceValue,
+        washerName,
       }),
     });
 
-    const { msg, success } = await res.json();
+    const { msg, ok } = await res.json();
     setError(msg);
-    setSuccess(success);
-
-    if (success) {
-      setPlateNumber("");
-      setServiceValue(0);
-      setTypeService("");
-      setTypeVehicle("");
-      setWasherName("");
-    }
+    setSuccess(ok);
   };
 
   return (
@@ -67,7 +68,7 @@ export default function FormNewService() {
         <div>
           <label htmlFor="plate-number">Número de placa:</label>
           <input
-            onChange={(e) => setPlateNumber(e.target.value.toLowerCase())}
+            onChange={(e) => setPlateNumber(e.target.value)}
             value={plateNumber}
             type="text"
             id="plate-number"
@@ -99,7 +100,7 @@ export default function FormNewService() {
           <label htmlFor="service-value">Valor del servicio:</label>
           <input
             onChange={(e) => {
-              setServiceValue(Number(e.target.value));
+              setServiceValue(e.target.value);
             }}
             value={serviceValue}
             type="number"

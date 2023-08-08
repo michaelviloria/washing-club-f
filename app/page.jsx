@@ -3,17 +3,15 @@ import IconCarWash from "../imgs/icon-car-wash.png";
 import IconContact from "../imgs/icon-contact.png";
 import IconPerson from "../imgs/icon-person.png";
 
-import MenuSection from "../components/MenuSection/MenuSection";
-import ButtonAdd from "../components/ButtonAdd/ButtonAdd";
+import MenuSection from "../components/MenuSection";
+import ButtonAdd from "../components/ButtonAdd";
 
 import Link from "next/link";
-import dbConnection from "@/utils/db_connection";
 
 export default function Home() {
-  dbConnection()
   return (
     <main className="flex flex-col items-center gap-5">
-      <Link href="/parking-lot" className="w-full">
+      <Link href="/parking" className="w-full">
         <MenuSection
           src={IconCar}
           alt="Icon of a car"
@@ -21,7 +19,7 @@ export default function Home() {
           bgColor="bg-menu-blue-cyan"
         />
       </Link>
-      <Link href="/services-performed" className="w-full">
+      <Link href="/services" className="w-full">
         <MenuSection
           src={IconCarWash}
           alt="Icon of a car"
@@ -45,7 +43,7 @@ export default function Home() {
           bgColor="bg-menu-red"
         />
       </Link>
-      <Link href="/new-service">
+      <Link href="/services/new">
         <ButtonAdd text="Nuevo servicio" />
       </Link>
     </main>

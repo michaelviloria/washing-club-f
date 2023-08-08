@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const newServiceListSchema = new Schema({
+const ServiceListSchema = new Schema({
   service: {
     type: String,
     required: [true, "El tipo de servicio es necesario."],
@@ -9,8 +9,6 @@ const newServiceListSchema = new Schema({
   },
 });
 
-const serviceList =
-  mongoose.models.listservices ||
-  mongoose.model("listservices", newServiceListSchema);
-
-export default serviceList;
+export const ServiceListModel =
+  mongoose?.models?.ServiceList ||
+  mongoose.model("ServiceList", ServiceListSchema);

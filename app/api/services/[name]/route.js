@@ -1,11 +1,12 @@
-import { WasherModel } from "@/models/Washer";
+import { ServiceModel } from "@/models/Service";
 import dbConnection from "@/utils/db_connection";
 import { NextResponse } from "next/server";
 
-export const GET = async () => {
+export const GET = async (req, { params }) => {
+  const { name } = params;
   await dbConnection();
   try {
-    const result = await WasherModel.find({});
+    const result = await ServiceModel.find({ washerName: name });
     return NextResponse.json({ data: result });
   } catch (error) {
     console.log(error);

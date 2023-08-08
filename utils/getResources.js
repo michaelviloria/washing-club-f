@@ -1,77 +1,81 @@
-const getVehicles = async (setVehicles) => {
+const getVehicles = async (setValue) => {
   try {
     const res = await fetch("/api/type-vehicle", { cache: "no-cache" });
-    const data = await res.json();
-    const vehicleList = [];
-    data.forEach((vehicle) => {
-      vehicleList.push(vehicle.vehicle);
+    const { data } = await res.json();
+    const values = [];
+    data.forEach((e) => {
+      values.push(e.vehicle);
     });
-    setVehicles(vehicleList);
+    return setValue(values);
   } catch (error) {
     console.log(error);
   }
 };
 
-const getServices = async (setServices) => {
+const getServices = async (setValue) => {
   try {
     const res = await fetch(`/api/services/`, { cache: "no-cache" });
-    const data = await res.json();
-    setServices(data);
+    const { data } = await res.json();
+    return setValue(data);
   } catch (error) {
     console.log(error);
   }
 };
 
-const getServicesList = async (setServicesList) => {
+const getServicesList = async (setValue) => {
   try {
     const res = await fetch("/api/service-list", { cache: "no-store" });
-    const data = await res.json();
-    const dataService = [];
-    data.forEach((service) => {
-      dataService.push(service.service);
+    const { data } = await res.json();
+    const values = [];
+    data.forEach((e) => {
+      values.push(e.service);
     });
-    setServicesList(dataService);
+    return setValue(values);
   } catch (error) {
     console.log(error);
   }
 };
 
-const getWashers = async (setWasher) => {
+const getWashers = async (setValue) => {
   try {
     const res = await fetch("/api/washers", { cache: "no-store" });
-    const data = await res.json();
-    const dataWashers = [];
-    data.forEach((washer) => {
-      dataWashers.push(washer.name);
+    const { data } = await res.json();
+    const values = [];
+    data.forEach((e) => {
+      values.push(e.name);
     });
-    setWasher(dataWashers);
+    return setValue(values);
   } catch (error) {
     console.log(error);
   }
 };
 
-const getServicesWasher = async (name, setWasherService) => {
+const getServicesWasher = async (name, setValue) => {
   try {
-    const res = await fetch(`/api/services-washer/${name}`, { cache: "no-store" });
-    const data = await res.json();
-    setWasherService(data);
+    const res = await fetch(`/api/services/${name}`, { cache: "no-store" });
+    const { data } = await res.json();
+    return setValue(data);
   } catch (error) {
     console.log(error);
   }
 };
 
-const getParking = async (setParking) => {
+const getParking = async (setValue) => {
   try {
     const res = await fetch("/api/parking", { cache: "no-store" });
-    const data = await res.json();
-    setParking(data);
+    const { data } = await res.json();
+    const values = [];
+    data.forEach((e) => {
+      values.push(e);
+    });
+    return setValue(values);
   } catch (error) {
     console.log(error);
   }
 };
 
-const getCurrentDate = (formatDate) => {
-  const date = new Date(formatDate);
+const getCurrentDate = () => {
+  const date = new Date();
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear().toString().slice(-2);

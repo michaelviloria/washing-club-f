@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import Dropdown from "./Dropdown";
 import { getVehicles } from "@/utils/getResources";
@@ -13,7 +12,11 @@ export default function FormNewParking() {
 
   useEffect(() => {
     getVehicles(setVehicles);
-  }, []);
+    if (success) {
+      setPlate("");
+      setTypeVehicle("");
+    }
+  }, [success]);
 
   const handleChangeVehicle = (e) => {
     setTypeVehicle(e.target.value);
@@ -22,25 +25,20 @@ export default function FormNewParking() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("/api/new-parking", {
+    const res = await fetch("/api/parking", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        plate,
+        plate: plate.toLowerCase().replace(/\s+/g, ""),
         typeVehicle,
       }),
     });
 
-    const { msg, success } = await res.json();
+    const { msg, ok } = await res.json();
+    setSuccess(ok);
     setError(msg);
-    setSuccess(success);
-
-    if (success) {
-      setPlate("");
-      setTypeVehicle("");
-    }
   };
 
   return (
@@ -53,7 +51,7 @@ export default function FormNewParking() {
             id="plate-number"
             placeholder="Ingrese número de placa."
             value={plate}
-            onChange={(e) => setPlate(e.target.value.toLowerCase())}
+            onChange={(e) => setPlate(e.target.value)}
           />
         </div>
 

@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const newWasherSchema = new Schema({
+const WasherSchema = new Schema({
   name: {
     type: String,
     required: [true, "El nombre del lavador es necesario."],
@@ -9,7 +9,5 @@ const newWasherSchema = new Schema({
   },
 });
 
-const washer =
-  mongoose.models.washers || mongoose.model("washers", newWasherSchema);
-
-export default washer;
+export const WasherModel =
+  mongoose?.models?.Washer || mongoose.model("Washer", WasherSchema);
