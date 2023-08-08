@@ -1,4 +1,4 @@
-import { getCurrentDate, getCurrentTime } from "@/utils/getResources";
+import { getCurrentDate, getCurrentTime } from "../utils/getResources";
 import mongoose, { Schema } from "mongoose";
 
 const ServiceSchema = new Schema(

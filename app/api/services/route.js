@@ -1,4 +1,4 @@
-import { ServiceModel } from "../../../models/Service.js";
+import { ServiceModel } from "@/models/service";
 import dbConnection from "@/utils/db_connection";
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";

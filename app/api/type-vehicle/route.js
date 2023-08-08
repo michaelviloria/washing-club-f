@@ -1,4 +1,4 @@
-import { TypeVehicleModel } from "../../../models/TypeVehicle.js";
+import { TypeVehicleModel } from "@/models/typeVehicle";
 import dbConnection from "@/utils/db_connection";
 import { NextResponse } from "next/server";
 
