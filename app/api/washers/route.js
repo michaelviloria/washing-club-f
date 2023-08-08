@@ -1,5 +1,5 @@
-import { WasherModel } from "@/models/Washer.js";
-import dbConnection from "@/utils/db_connection.js";
+import { WasherModel } from "../../../models/Washer";
+import dbConnection from "@/utils/db_connection";
 import { NextResponse } from "next/server";
 
 export const GET = async () => {

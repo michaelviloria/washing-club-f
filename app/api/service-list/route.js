@@ -1,5 +1,5 @@
-import { ServiceListModel } from "@/models/ServiceList.js";
-import dbConnection from "@/utils/db_connection.js";
+import { ServiceListModel } from "../../../models/ServiceList";
+import dbConnection from "@/utils/db_connection";
 import { NextResponse } from "next/server";
 
 export const GET = async () => {

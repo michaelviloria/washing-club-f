@@ -1,5 +1,5 @@
-import { TypeVehicleModel } from "@/models/TypeVehicle.js";
-import dbConnection from "@/utils/db_connection.js";
+import { TypeVehicleModel } from "../../../models/TypeVehicle";
+import dbConnection from "@/utils/db_connection";
 import { NextResponse } from "next/server";
 
 export const GET = async () => {
