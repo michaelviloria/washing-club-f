@@ -17,13 +17,8 @@ const ParkingSchema = new Schema(
     },
 
     date: {
-      type: String,
-      default: `${getCurrentDate()}`,
-    },
-
-    time: {
-      type: String,
-      default: `${getCurrentTime()}`,
+      type: Date,
+      default: Date.now(),
     },
   },
   {
