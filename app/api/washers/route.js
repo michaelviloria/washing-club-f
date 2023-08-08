@@ -1,4 +1,4 @@
-import { WasherModel } from "../../../models/Washer";
+import { WasherModel } from "../../../models/Washer.js";
 import dbConnection from "@/utils/db_connection";
 import { NextResponse } from "next/server";
 

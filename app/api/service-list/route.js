@@ -1,4 +1,4 @@
-import { ServiceListModel } from "../../../models/ServiceList";
+import { ServiceListModel } from "../../../models/ServiceList.js";
 import dbConnection from "@/utils/db_connection";
 import { NextResponse } from "next/server";
 
