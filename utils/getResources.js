@@ -74,20 +74,27 @@ const getParking = async (setValue) => {
   }
 };
 
-const getCurrentDate = () => {
-  const date = new Date();
+const getCurrentDate = (dateUTC) => {
+  const date = getFormattedDate(dateUTC);
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear().toString().slice(-2);
   return `${day}/${month.toString().padStart(2, "0")}/${year}`;
 };
 
-const getCurrentTime = () => {
-  const date = new Date();
+const getCurrentTime = (dateUTC) => {
+  const date = getFormattedDate(dateUTC);
   const hours = date.getHours();
   const minutes = date.getMinutes().toString().padStart(2, "0");
   const amOpm = hours >= 12 ? "pm" : "am";
   return `${hours}:${minutes} ${amOpm}`;
+};
+
+const getFormattedDate = (dateUTC) => {
+  const date = new Date(dateUTC);
+  const offsetBogota = -300;
+  date.setMinutes(date.getMinutes() + offsetBogota);
+  return date;
 };
 
 export {
@@ -99,4 +106,5 @@ export {
   getCurrentTime,
   getParking,
   getServices,
+  getFormattedDate,
 };

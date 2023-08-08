@@ -7,7 +7,7 @@ export default function customersPage() {
   return (
     <main className="flex flex-col gap-4 pt-12">
       <ButtonPrev />
-      <h1>Clientes: PAgina de ejemplo</h1>
+      <h1>Clientes: Pagina de ejemplo</h1>
       <CustomerItem
         name="Pedro Torres"
         phone="+571234567890"

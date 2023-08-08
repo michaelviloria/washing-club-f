@@ -1,18 +1,24 @@
 "use client";
-import { getServices } from "@/utils/getResources";
+import {
+  getCurrentDate,
+  getFormattedDate,
+  getServices,
+} from "@/utils/getResources";
 import { useEffect, useState } from "react";
 
 export default function ServiceItems() {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    getServices(setServices)
+    getServices(setServices);
   }, []);
-  
+
   return (
     <section>
       {services.length >= 1 ? (
         services.map((service) => {
+          const dateCurrent = getCurrentDate(service.date);
+
           return (
             <article
               key={service._id}
@@ -40,11 +46,7 @@ export default function ServiceItems() {
               </p>
               <p>
                 <strong>Hora de registro: </strong>
-                {service.time}
-              </p>
-              <p>
-                <strong>Fecha de registro: </strong>
-                {service.date}
+                {dateCurrent}
               </p>
             </article>
           );

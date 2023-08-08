@@ -1,4 +1,3 @@
-import { getCurrentDate, getCurrentTime } from "../utils/getResources";
 import mongoose, { Schema } from "mongoose";
 
 const ParkingSchema = new Schema(
