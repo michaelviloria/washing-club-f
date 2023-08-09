@@ -1,6 +1,6 @@
 const getVehicles = async (setValue) => {
   try {
-    const res = await fetch("/api/type-vehicle", { cache: "no-cache" });
+    const res = await fetch("/api/type-vehicle", { cache: "no-store" });
     const { data } = await res.json();
     const values = [];
     data.forEach((e) => {
@@ -14,7 +14,7 @@ const getVehicles = async (setValue) => {
 
 const getServices = async (setValue) => {
   try {
-    const res = await fetch(`/api/services/`, { cache: "no-cache" });
+    const res = await fetch(`/api/services/`, { cache: "no-store" });
     const { data } = await res.json();
     return setValue(data);
   } catch (error) {
@@ -74,27 +74,37 @@ const getParking = async (setValue) => {
   }
 };
 
-const getCurrentDate = (dateUTC) => {
-  const date = getFormattedDate(dateUTC);
+const getCurrentDate = async (setValue) => {
+  const date = new Date(await getFormattedDate());
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear().toString().slice(-2);
-  return `${day}/${month.toString().padStart(2, "0")}/${year}`;
+  return setValue(`${day}/${month.toString().padStart(2, "0")}/${year}`);
 };
 
-const getCurrentTime = (dateUTC) => {
-  const date = getFormattedDate(dateUTC);
+const getCurrentTime = async (setValue) => {
+  const date = new Date(await getFormattedDate());
   const hours = date.getHours();
   const minutes = date.getMinutes().toString().padStart(2, "0");
   const amOpm = hours >= 12 ? "pm" : "am";
-  return `${hours}:${minutes} ${amOpm}`;
+  return setValue(`${hours}:${minutes} ${amOpm}`);
 };
 
-const getFormattedDate = (dateUTC) => {
-  const date = new Date(dateUTC);
-  const offsetBogota = -300;
-  date.setMinutes(date.getMinutes() + offsetBogota);
-  return date;
+const getFormattedDate = async (setValue = false) => {
+  const result = await fetch(
+    "https://worldtimeapi.org/api/timezone/America/Bogota",
+    {
+      cache: "no-store",
+    }
+  );
+
+  const data = await result.json();
+
+  if (setValue) {
+    return setValue(data.datetime);
+  } else {
+    return data.datetime;
+  }
 };
 
 export {

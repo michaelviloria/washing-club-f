@@ -1,9 +1,20 @@
 "use client";
 import { useEffect, useState } from "react";
 import Dropdown from "./Dropdown";
-import { getServicesList, getVehicles, getWashers } from "@/utils/getResources";
+import {
+  getCurrentDate,
+  getCurrentTime,
+  getFormattedDate,
+  getServicesList,
+  getVehicles,
+  getWashers,
+} from "@/utils/getResources";
 
 export default function FormNewService() {
+  const [dateUtc, setDateUtc] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+
   const [plateNumber, setPlateNumber] = useState("");
   const [typeVehicle, setTypeVehicle] = useState("");
   const [typeService, setTypeService] = useState("");
@@ -17,6 +28,10 @@ export default function FormNewService() {
   const [washer, setWasher] = useState([]);
 
   useEffect(() => {
+    getCurrentDate(setDate);
+    getCurrentTime(setTime);
+    getFormattedDate(setDateUtc);
+
     getVehicles(setVehicles);
     getServicesList(setServicesList);
     getWashers(setWasher);
@@ -54,6 +69,9 @@ export default function FormNewService() {
         typeService,
         price: serviceValue,
         washerName,
+        date,
+        time,
+        dateUtc,
       }),
     });
 

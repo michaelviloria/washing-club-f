@@ -1,9 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
 import Dropdown from "./Dropdown";
-import { getVehicles } from "@/utils/getResources";
+import {
+  getCurrentDate,
+  getCurrentTime,
+  getFormattedDate,
+  getVehicles,
+} from "@/utils/getResources";
 
 export default function FormNewParking() {
+  const [dateUtc, setDateUtc] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  
   const [plate, setPlate] = useState("");
   const [typeVehicle, setTypeVehicle] = useState("");
   const [vehicles, setVehicles] = useState([]);
@@ -12,6 +21,10 @@ export default function FormNewParking() {
 
   useEffect(() => {
     getVehicles(setVehicles);
+
+    getCurrentDate(setDate);
+    getCurrentTime(setTime);
+    getFormattedDate(setDateUtc);
     if (success) {
       setPlate("");
       setTypeVehicle("");
@@ -33,6 +46,9 @@ export default function FormNewParking() {
       body: JSON.stringify({
         plate: plate.toLowerCase().replace(/\s+/g, ""),
         typeVehicle,
+        date,
+        time,
+        dateUtc,
       }),
     });
 

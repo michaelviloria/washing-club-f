@@ -16,8 +16,13 @@ const ParkingSchema = new Schema(
     },
 
     date: {
+      type: String,
+    },
+    time: {
+      type: String,
+    },
+    dateUtc: {
       type: Date,
-      default: Date.now(),
     },
   },
   {

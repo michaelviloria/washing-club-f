@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 export const GET = async () => {
   await dbConnection();
   try {
-    const result = await ParkingModel.find({});
+    const result = await ParkingModel.find({}).sort({ dateUtc: -1 });
     return NextResponse.json({ data: result });
   } catch (error) {
     console.log(error);

@@ -2,11 +2,7 @@
 import ButtonPrev from "@/components/ButtonPrev";
 import WasherServiceitem from "@/components/WasherServiceItem";
 
-import {
-  getCurrentDate,
-  getCurrentTime,
-  getServicesWasher,
-} from "@/utils/getResources";
+import { getServicesWasher } from "@/utils/getResources";
 import { useEffect, useState } from "react";
 
 export default function WahserServicesPage({ params }) {
@@ -22,16 +18,14 @@ export default function WahserServicesPage({ params }) {
       <h1>Servicios de {name}</h1>
       {washerServices.length >= 1 ? (
         washerServices.map((service) => {
-          const dateCurrent = getCurrentDate(service.date);
-          const timeCurrent = getCurrentTime(service.date);
           return (
             <WasherServiceitem
               plate={service.plate}
               type={service.typeVehicle}
               service={service.typeService}
               price={service.price}
-              date={dateCurrent}
-              time={timeCurrent}
+              date={service.date}
+              time={service.time}
               key={service._id}
             />
           );

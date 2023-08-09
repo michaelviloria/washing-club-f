@@ -1,9 +1,5 @@
 "use client";
-import {
-  getCurrentDate,
-  getCurrentTime,
-  getParking,
-} from "@/utils/getResources";
+import { getParking } from "@/utils/getResources";
 import { useEffect, useState } from "react";
 
 export default function ParkingItems() {
@@ -17,8 +13,6 @@ export default function ParkingItems() {
     <section>
       {parking.length >= 1 ? (
         parking.map((car) => {
-          const dateCurrent = getCurrentDate(car.date);
-          const timeCurrent = getCurrentTime(car.date);
           return (
             <article
               key={car._id}
@@ -34,7 +28,7 @@ export default function ParkingItems() {
               </p>
               <p>
                 <strong>Ingreso: </strong>
-                {`${dateCurrent} ${timeCurrent}`}
+                {`${car.date} ${car.time}`}
               </p>
               <p>
                 <strong>Tiempo transcurrido: </strong>

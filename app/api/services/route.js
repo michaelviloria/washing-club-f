@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 export const GET = async () => {
   await dbConnection();
   try {
-    const result = await ServiceModel.find({}).sort({ date: -1, time: 1 });
+    const result = await ServiceModel.find({}).sort({ dateUtc: -1 });
     return NextResponse.json({ data: result });
   } catch (error) {
     console.log(error);
