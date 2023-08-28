@@ -1,8 +1,8 @@
 "use client";
 
-import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/button";
 import { useEffect, useState } from "react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default async function FormRegister() {
   const [username, setUsername] = useState("");
@@ -11,12 +11,21 @@ export default async function FormRegister() {
   const [error, setError] = useState([]);
   const [success, setSuccess] = useState(false);
 
+  const router = useRouter();
+
   useEffect(() => {
     if (success) {
       setUsername("");
       setPassword("");
+
+      signIn("credentials", {
+        username,
+        password,
+      });
+
+      return router.push("/");
     }
-  }, [success]);
+  }, [success, username, password, router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,38 +46,33 @@ export default async function FormRegister() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div>
-          <Input
+        <div className="mt-4 mb-3">
+          <label htmlFor="user">Usuario</label>
+          <input
             type="text"
-            label="Usuario"
-            variant="bordered"
-            radius="sm"
             placeholder="Ingresa el usuario."
+            value={username}
             onChange={(e) => {
               setUsername(e.target.value);
             }}
-            value={username}
           />
         </div>
 
-        <div>
-          <Input
+        <div className="mb-3">
+          <label htmlFor="password">Contraseña</label>
+          <input
             type="password"
-            label="Contraseña"
-            variant="bordered"
-            radius="sm"
-            size="lg"
             placeholder="Ingresa la contraseña."
+            value={password}
             onChange={(e) => {
               setPassword(e.target.value);
             }}
-            value={password}
           />
         </div>
 
-        <Button size="md" radius="sm" variant="shadow" type="submit">
-          Registrar usuario.
-        </Button>
+        <button className="bg-green-500" type="submit">
+          Registrar usuario
+        </button>
       </form>
 
       <div className="flex flex-col mt-4 mb-3 bg-slate-100">
