@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-export default function FormRegister() {
+export default function FormLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -31,7 +31,7 @@ export default function FormRegister() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("/api/auth/signup", {
+    const res = await fetch("/api/auth/signin", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -47,7 +47,7 @@ export default function FormRegister() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="mt-4 mb-3">
+        <div>
           <label htmlFor="user">Usuario</label>
           <input
             type="text"
@@ -59,7 +59,7 @@ export default function FormRegister() {
           />
         </div>
 
-        <div className="mb-3">
+        <div>
           <label htmlFor="password">Contraseña</label>
           <input
             type="password"
@@ -71,8 +71,8 @@ export default function FormRegister() {
           />
         </div>
 
-        <button className="bg-green-500" type="submit">
-          Registrar usuario
+        <button type="submit" className="bg-green-500">
+          Iniciar sesion
         </button>
       </form>
 
