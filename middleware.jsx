@@ -5,9 +5,8 @@ export async function middleware(req) {
     const token = req.cookies.get("auth_cookie");
 
     if (!token) return NextResponse.redirect(new URL("/login", req.url));
-
-    const res = await fetch(`http://localhost:3000/api/auth/check`, {
-      method: "GET",
+    
+    const res = await fetch(`${process.env.URL_PAGE}/api/auth/check`, {
       headers: {
         token: token.value,
       },

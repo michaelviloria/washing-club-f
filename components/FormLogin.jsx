@@ -15,8 +15,8 @@ export function FormLogin() {
   useEffect(() => {
     if (success) {
       setPassword("");
-      setUsername("");
-      setTimeout(router.push("/dashboard"), 2000);
+      setUsername("asd");
+      setTimeout(router.push("/dashboard"), 1000);
     }
   }, [success, router]);
 
