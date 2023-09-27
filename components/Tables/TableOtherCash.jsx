@@ -21,7 +21,7 @@ export default function TableOtherCash() {
         </tr>
       </thead>
       <tbody>
-        {cashFlow.map((el, index) => {
+        {cash.map((el, index) => {
           let stateCell = null;
           switch (el.state) {
             case "Pagado":
