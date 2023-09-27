@@ -2,22 +2,18 @@ import mongoose, { Schema } from "mongoose";
 
 const ServiceSchema = new Schema(
   {
-    plate: {
+    description: {
       type: String,
-      required: [true, "El número de placa es requerida."],
-      trim: true,
+      required: [true, "La descripcion del servicio es requerida"],
       minLength: [3, "Minimo de letras y números es 3"],
       maxLength: [20, "Máximo de letras y números es 20"],
     },
 
-    typeVehicle: {
+    plate: {
       type: String,
-      required: [true, "El tipo de vehiculo es requerido."],
-    },
-
-    typeService: {
-      type: String,
-      required: [true, "El tipo de servicio es requerido."],
+      required: [true, "El número de placa es requerida."],
+      minLength: [3, "Minimo de letras y números es 3"],
+      maxLength: [20, "Máximo de letras y números es 20"],
     },
 
     price: {
@@ -28,11 +24,26 @@ const ServiceSchema = new Schema(
       maxLength: [6, "Valor máximo del servicio es de 6 cifras."],
     },
 
+    typeVehicle: {
+      type: String,
+      required: [true, "El tipo de vehiculo es requerido."],
+    },
+
     washerName: {
       type: String,
       required: [true, "El nombre del lavador es requerido."],
       minLength: [3, "La cantidad minima de letras es 3"],
       maxLength: [50, "La cantidad máxima de letras es 50"],
+    },
+
+    state: {
+      type: String,
+      default: "Pendiente",
+    },
+
+    category: {
+      type: String,
+      default: "lavada",
     },
 
     date: {

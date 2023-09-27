@@ -1,38 +1,56 @@
 "use client";
+
 import { useEffect, useState } from "react";
-import Dropdown from "./Dropdown";
+import { useRouter } from "next/navigation";
+
+import Dropdown from "../Buttons/Dropdown";
+import { MessagesForm } from "../MessagesForm";
 import {
   getCurrentDate,
   getCurrentTime,
   getFormattedDate,
   getVehicles,
+  getStates,
 } from "@/utils/getResources";
 
 export default function FormNewParking() {
   const [dateUtc, setDateUtc] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  
+
+  const [serviceValue, setServiceValue] = useState("");
   const [plate, setPlate] = useState("");
   const [typeVehicle, setTypeVehicle] = useState("");
+  const [payment, setPayment] = useState("");
+
   const [vehicles, setVehicles] = useState([]);
-  const [error, setError] = useState([]);
+  const [status, setStatus] = useState([]);
+  const [message, setMessage] = useState([]);
   const [success, setSuccess] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     getVehicles(setVehicles);
+    getStates(setStatus);
 
     getCurrentDate(setDate);
     getCurrentTime(setTime);
     getFormattedDate(setDateUtc);
     if (success) {
+      setServiceValue("");
       setPlate("");
       setTypeVehicle("");
+      setPayment("");
+      setTimeout(router.push("/cash-flow"), 1000);
     }
-  }, [success]);
+  }, [success, router]);
 
   const handleChangeVehicle = (e) => {
     setTypeVehicle(e.target.value);
+  };
+  const handleChangeStatus = (e) => {
+    setPayment(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -45,7 +63,9 @@ export default function FormNewParking() {
       },
       body: JSON.stringify({
         plate: plate.toLowerCase().replace(/\s+/g, ""),
+        price: serviceValue,
         typeVehicle,
+        state: payment,
         date,
         time,
         dateUtc,
@@ -54,13 +74,13 @@ export default function FormNewParking() {
 
     const { msg, ok } = await res.json();
     setSuccess(ok);
-    setError(msg);
+    setMessage(msg);
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="mt-4 mb-3">
+        <div>
           <label htmlFor="plate-number">Número de placa:</label>
           <input
             type="text"
@@ -71,7 +91,7 @@ export default function FormNewParking() {
           />
         </div>
 
-        <div className="mb-3">
+        <div>
           <label htmlFor="type-vehicle">Tipo de vehiculo:</label>
           <Dropdown
             id="type-vehicle"
@@ -81,23 +101,32 @@ export default function FormNewParking() {
           />
         </div>
 
-        <button className="bg-green-500" type="submit">
-          Agregar
-        </button>
+        <div>
+          <label htmlFor="service-value">Valor del servicio:</label>
+          <input
+            onChange={(e) => {
+              setServiceValue(e.target.value);
+            }}
+            value={serviceValue}
+            type="number"
+            id="service-value"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="payment-status">Estado del pago</label>
+          <Dropdown
+            id="payment-status"
+            value={payment}
+            change={handleChangeStatus}
+            options={status}
+          />
+        </div>
+
+        <button type="submit">Agregar</button>
       </form>
 
-      <div className="flex flex-col mt-4 mb-3 bg-slate-100">
-        {error.map((e) => (
-          <div
-            key={e}
-            className={`${
-              success ? "text-green-600" : "text-red-600"
-            } px-5 py-2`}
-          >
-            {e}
-          </div>
-        ))}
-      </div>
+      <MessagesForm message={message} success={success} />
     </>
   );
 }

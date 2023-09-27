@@ -1,5 +1,4 @@
 "use client";
-import ButtonPrev from "@/components/ButtonPrev";
 import WasherServiceitem from "@/components/WasherServiceItem";
 
 import { getServicesWasher } from "@/utils/getResources";
@@ -13,8 +12,7 @@ export default function WahserServicesPage({ params }) {
   }, [name]);
 
   return (
-    <main className="flex flex-col gap-4">
-      <ButtonPrev />
+    <div className="main-container">
       <h1>Servicios de {name}</h1>
       {washerServices.length >= 1 ? (
         washerServices.map((service) => {
@@ -33,6 +31,6 @@ export default function WahserServicesPage({ params }) {
       ) : (
         <h2>Ningun servicio registrado.</h2>
       )}
-    </main>
+    </div>
   );
 }

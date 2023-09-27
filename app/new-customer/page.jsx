@@ -1,9 +1,6 @@
-import ButtonPrev from "@/components/ButtonPrev";
-
 export default function NewCustomerPAge() {
   return(
-    <main>
-      <ButtonPrev />
+    <div className="main-container">
       <h1>Nuevo Cliente</h1>
       {/* <Form action={""} method={"post"}>
         <div className="mt-4 mb-3">
@@ -43,6 +40,6 @@ export default function NewCustomerPAge() {
           </Link>
         </div>
       </Form> */}
-    </main>
+    </div>
   )
 }

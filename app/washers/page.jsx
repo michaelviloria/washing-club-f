@@ -1,13 +1,11 @@
-import ButtonPrev from "@/components/ButtonPrev";
 import WasherItems from "@/components/WasherItem";
 
 export default function WashersPAge() {
 
   return (
-    <main>
-      <ButtonPrev />
+    <div className="main-container">
       <h1>Lavadores</h1>
       <WasherItems />
-    </main>
+    </div>
   );
 }

@@ -2,28 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-main {
-  @apply pt-9;
+.main-container {
+  @apply w-full max-w-4xl py-4;
 }
-
-form {
-  @apply w-full px-1;
+.main-container > table {
+  @apply container w-full my-5 overflow-hidden rounded shadow-lg min-w-fit;
 }
-
-form > button {
-  @apply block py-2 mx-auto text-base font-bold text-green-900 rounded px-7;
-}
-
-form > div {
-  @apply mt-4 mb-3;
-}
-
-form > div > input {
-  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500;
-}
-
-form > div > label {
-  @apply text-base font-semibold;
+.main-container > table > thead > tr {
+  @apply bg-purple-200;
 }
 
 h1 {
@@ -31,4 +17,40 @@ h1 {
 }
 h2 {
   @apply text-2xl font-semibold text-center;
+}
+
+form {
+  @apply w-full max-w-2xl px-1 m-auto;
+}
+button[type="submit"] {
+  @apply block py-2 mx-auto text-base font-bold text-green-900 bg-green-500 rounded px-7;
+}
+form > div {
+  @apply mt-3 mb-3;
+}
+.messages-form {
+  @apply flex flex-col mt-4 mb-3 bg-slate-100;
+}
+form > div > input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500;
+}
+form > div > label {
+  @apply text-base font-semibold;
+}
+
+nav .container ul li {
+  @apply w-full px-3 py-2 my-1 text-xl font-bold lg:text-center hover:text-blue-300;
+}
+nav .container ul .link {
+  @apply text-sky-400;
+}
+
+table th {
+  @apply px-3 py-2 text-center;
+}
+table td {
+  @apply px-3 py-2 text-center;
+}
+table td.state {
+  @apply px-3 py-2 font-semibold;
 }

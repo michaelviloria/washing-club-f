@@ -1,3 +1,4 @@
+import NavBar from "@/components/NavBar";
 import "./globals.css";
 
 export const metadata = {
@@ -11,8 +12,11 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </head>
-      <body className="flex flex-col justify-center w-full max-w-lg min-h-screen p-4 mx-auto bg-white rounded-md shadow-lg ">
-        <main>{children}</main>
+      <body>
+        <main className="w-full min-h-screen px-4 m-auto bg-white rounded-md shadow-lg lg:flex lg:gap-2 max-w-7xl">
+          <NavBar />
+          {children}
+        </main>
       </body>
     </html>
   );

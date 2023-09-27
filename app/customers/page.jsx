@@ -1,12 +1,10 @@
-import ButtonAdd from "@/components/ButtonAdd";
-import ButtonPrev from "@/components/ButtonPrev";
+import ButtonAdd from "@/components/Buttons/ButtonAdd";
 import CustomerItem from "@/components/CustomerItem/CustomerItem";
 import Link from "next/link";
 
-export default function customersPage() {
+export default function CustomersPage() {
   return (
-    <main className="flex flex-col gap-4 pt-12">
-      <ButtonPrev />
+    <div className="main-container">
       <h1>Clientes: Pagina de ejemplo</h1>
       <CustomerItem
         name="Pedro Torres"
@@ -32,6 +30,6 @@ export default function customersPage() {
       <Link href="/new-customer" className="mx-auto">
         <ButtonAdd text="Añadir cliente" />
       </Link>
-    </main>
+    </div>
   );
 }
