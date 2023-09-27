@@ -13,7 +13,7 @@ export default function TableOtherCash() {
     <table>
       <thead>
         <tr>
-          <th>Descripcion</th>
+          <th>Descripción</th>
           <th>Valor</th>
           <th>Fecha</th>
           <th>Hora</th>
