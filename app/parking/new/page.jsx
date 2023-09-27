@@ -1,12 +1,10 @@
-import ButtonPrev from "@/components/ButtonPrev";
-import FormNewParking from "@/components/FormNewParking";
+import FormNewParking from "@/components/Forms/FormNewParking";
 
 export default async function NewParkingPage() {
   return (
-    <main>
-      <ButtonPrev />
+    <div className="main-container">
       <h1>Nuevo parqueo</h1>
       <FormNewParking />
-    </main>
+    </div>
   );
 }

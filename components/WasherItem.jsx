@@ -15,7 +15,10 @@ export default function WasherItems() {
       {washers.length >= 1 ? (
         washers.map((washer) => {
           return (
-            <article key={washer} className="mb-5 bg-white border border-gray-300 rounded-md shadow-lg">
+            <article
+              key={washer}
+              className="mb-5 bg-white border border-gray-300 rounded-md shadow-lg"
+            >
               <h3 className="text-2xl font-bold text-center">{washer}</h3>
               <div className="flex justify-center gap-8 p-2">
                 <Link href={`/washers/services/${washer}`}>

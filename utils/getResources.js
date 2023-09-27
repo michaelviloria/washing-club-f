@@ -50,6 +50,20 @@ const getWashers = async (setValue) => {
   }
 };
 
+const getStates = async (setValue) => {
+  try {
+    const res = await fetch("/api/states", { cache: "no-store" });
+    const data = await res.json();
+    const values = [];
+    data.forEach((e) => {
+      values.push(e.state);
+    });
+    return setValue(values);
+  } catch (error) {
+    return console.log(error);
+  }
+};
+
 const getServicesWasher = async (name, setValue) => {
   try {
     const res = await fetch(`/api/services/${name}`, { cache: "no-store" });
@@ -64,6 +78,34 @@ const getParking = async (setValue) => {
   try {
     const res = await fetch("/api/parking", { cache: "no-store" });
     const { data } = await res.json();
+    const values = [];
+    data.forEach((e) => {
+      values.push(e);
+    });
+    return setValue(values);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getOtherCash = async (setValue) => {
+  try {
+    const res = await fetch("/api/other-cash", { cache: "no-store" });
+    const { data } = await res.json();
+    const values = [];
+    data.forEach((e) => {
+      values.push(e);
+    });
+    return setValue(values);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getCashFlow = async (setValue) => {
+  try {
+    const res = await fetch("/api/cash-flow", { cache: "no-store" });
+    const data = await res.json();
     const values = [];
     data.forEach((e) => {
       values.push(e);
@@ -111,10 +153,13 @@ export {
   getVehicles,
   getServicesList,
   getWashers,
+  getStates,
   getCurrentDate,
   getServicesWasher,
   getCurrentTime,
   getParking,
   getServices,
   getFormattedDate,
+  getOtherCash,
+  getCashFlow,
 };
