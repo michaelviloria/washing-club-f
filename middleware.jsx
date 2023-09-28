@@ -6,7 +6,7 @@ export async function middleware(req) {
 
     if (!token) return NextResponse.redirect(new URL("/login", req.url));
     
-    const res = await fetch(`${process.env.URL_PAGE}/api/auth/check`, {
+    const res = await fetch(`${req.nextUrl.origin}/api/auth/check`, {
       headers: {
         token: token.value,
       },
