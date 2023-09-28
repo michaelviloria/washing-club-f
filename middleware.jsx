@@ -2,10 +2,11 @@ import { NextResponse } from "next/server";
 
 export async function middleware(req) {
   try {
+    console.log(req.nextUrl.origin);
     const token = req.cookies.get("auth_cookie");
 
     if (!token) return NextResponse.redirect(new URL("/login", req.url));
-    
+
     const res = await fetch(`${req.nextUrl.origin}/api/auth/check`, {
       headers: {
         token: token.value,
@@ -13,6 +14,7 @@ export async function middleware(req) {
     });
 
     const data = await res.json();
+    console.log(data);
 
     if (!data.isAuthorized)
       return NextResponse.redirect(new URL("/login", req.url));
