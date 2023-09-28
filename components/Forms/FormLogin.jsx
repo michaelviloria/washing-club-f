@@ -16,7 +16,9 @@ export function FormLogin() {
     if (success) {
       setPassword("");
       setUsername("");
-      setTimeout(router.push("/"), 1000);
+      setTimeout(() => {
+        router.replace("/");
+      }, 1000);
     }
   }, [success, router]);
 
