@@ -1,4 +1,3 @@
-import ButtonAdd from "@/components/Buttons/ButtonAdd";
 import CustomerItem from "@/components/CustomerItem/CustomerItem";
 import Link from "next/link";
 
@@ -27,9 +26,6 @@ export default function CustomersPage() {
         type="Carro grande"
         parking="30 dias"
       />
-      <Link href="/new-customer" className="mx-auto">
-        <ButtonAdd text="Añadir cliente" />
-      </Link>
     </div>
   );
 }
