@@ -2,8 +2,9 @@ import { NextResponse } from "next/server";
 
 export async function middleware(req) {
   try {
-    console.log(req.nextUrl.origin);
     const token = req.cookies.get("auth_cookie");
+    console.log("TOKEN", token);
+    console.log("REQ.COOKIES", req.cookies);
 
     if (!token) return NextResponse.redirect(new URL("/login", req.url));
 
