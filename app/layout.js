@@ -6,6 +6,8 @@ export const metadata = {
   description: "Sistema de gestion de un negocio local.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="es">

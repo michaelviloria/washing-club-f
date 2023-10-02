@@ -1,4 +1,4 @@
-import TableServices from "@/components/TableServices";
+import TableServices from "@/components/Tables/TableServices";
 
 export default async function ServicesPage() {
   return (
